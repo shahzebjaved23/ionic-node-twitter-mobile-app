@@ -1,0 +1,49 @@
+<!--
+  Generated template for the Tweets page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>tweets</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+	<div #spinner style="display: none;" class="spin">
+	    <ion-spinner color="primary" text-center name="crescent"></ion-spinner>
+	</div>
+
+	<div *ngIf="tweetsAvailable">
+	    <ion-card *ngFor="let tweet of tweets">
+		    <ion-item>
+		    	<ion-avatar item-left>
+		      		<img src="{{tweet.user.profile_image_url}}">
+		    	</ion-avatar>
+		    	<h2>{{tweet.user.name}}</h2>
+		    	<p>{{tweet.created_at}}</p>
+		  	</ion-item>
+
+		  	<img style="max-height: 200px;" src="{{tweet.user.profile_background_image_url}}">
+
+			<ion-card-content>
+		    	<p>{{tweet.text}}</p>
+		  	</ion-card-content>
+	  	</ion-card>	
+	</div>
+
+	<div *ngIf="!tweetsAvailable" style="text-align: center;">
+		<h4>Sorry ! No Tweets to show</h4>
+		<p>A network error occured, please check your internet connection and try again</p>
+	</div>
+
+	<div *ngIf="tweetsEmpty" style="text-align: center;">
+		<h4>Sorry ! No Tweets to show</h4>
+		<p>Please change the query and try again</p>		
+	</div>
+
+</ion-content>
