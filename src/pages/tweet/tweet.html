@@ -1,0 +1,34 @@
+<!--
+  Generated template for the Tweet page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<p #errormessage style="text-align: center;display: none;">An Error Occured, Please check your internet connection try again</p>
+
+<div #spinner style="margin: auto;" class="spinner">
+    <ion-spinner color="primary" text-center name="crescent"></ion-spinner>
+</div>
+
+<ion-card>
+    <ion-item>
+    	<ion-avatar item-left>
+      		<img src="{{tweet.user.profile_image_url}}">
+    	</ion-avatar>
+    	<h2>{{tweet.user.name}}</h2>
+    	<p>{{tweet.created_at}}</p>
+  	</ion-item>
+
+  	<img style="max-height: 200px;" src="{{tweet.user.profile_background_image_url}}">
+
+	<ion-card-content>
+    	<div #tweet_div>
+    		
+    	</div>
+  	</ion-card-content>
+</ion-card>
+
+
+ <!-- <ng2-tweet tweetId="{{tweet.id_str}}"></ng2-tweet> -->
+

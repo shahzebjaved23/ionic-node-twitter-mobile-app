@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Tweets } from "../../providers/tweets";
+import { TweetsProvider } from "../../providers/tweets";
 import { TweetsPage } from "../tweets/tweets";
 import { QueryInfo } from "../../models/query_info";
+import { Tabs } from "../tabs/tabs";
 
 /**
  * Generated class for the Home page.
@@ -14,8 +15,12 @@ import { QueryInfo } from "../../models/query_info";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers: [Tweets]
+  providers: [TweetsProvider]
 })
+
+/*
+* the main page, when the app loads up
+*/
 export class HomePage {
 
   team : String = "";
@@ -23,14 +28,22 @@ export class HomePage {
   author: String = "";
   source: String = "";
   useDb: boolean = false;
+  player_team_op: String = "AND";
+  team_author_op: String = "AND";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private tweetsprovider: Tweets) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private tweetsprovider: TweetsProvider) {
   }
 
+  /*
+  * click handler for the get tweets button
+  */
   onGetTweetsClick(){
-  	this.tweetsprovider.emitQueryInfo(this.player,this.team,this.author,this.source,this.useDb);
-  	var queryInfo = new QueryInfo(this.player,this.team,this.author,this.source,this.useDb);	
-  	this.navCtrl.push(TweetsPage,{queryInfo: queryInfo});
+  	var queryInfo = new QueryInfo(this.player,this.team,this.author,this.useDb, this.player_team_op, this.team_author_op);	
+  	console.log(queryInfo);
+    this.tweetsprovider.emitTweetsEvent(queryInfo);
+
+    // navigate to the tabs page
+  	this.navCtrl.push(Tabs,{queryInfo: queryInfo});
   }
 
   ionViewDidLoad() {

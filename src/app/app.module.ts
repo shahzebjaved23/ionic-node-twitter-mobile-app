@@ -8,26 +8,40 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HttpModule } from "@angular/http";
 import { TweetsPage } from "../pages/tweets/tweets";
+import { Tabs } from "../pages/tabs/tabs";
+import { ChartPage } from "../pages/chart/chart";
+import { PlayerInfo } from "../pages/player-info/player-info";
+import { Tweet } from "../pages/tweet/tweet";
+import { Ng2TweetModule } from 'ng2-tweet/lib/index';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TweetsPage
+    TweetsPage,
+    Tabs,
+    ChartPage,
+    PlayerInfo,
+    Tweet
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    Ng2TweetModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    TweetsPage
+    TweetsPage,
+    Tabs,
+    ChartPage,
+    PlayerInfo,
+    Tweet
   ],
   providers: [
-    StatusBar,
+    StatusBar,     
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

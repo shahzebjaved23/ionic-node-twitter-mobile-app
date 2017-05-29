@@ -14,12 +14,12 @@
 
 <ion-content padding>
 
-	<div #spinner style="display: none;" class="spin">
+	<div #spinner style="display: none; margin: auto;" class="spinner">
 	    <ion-spinner color="primary" text-center name="crescent"></ion-spinner>
 	</div>
 
 	<div *ngIf="tweetsAvailable">
-	    <ion-card *ngFor="let tweet of tweets">
+	    <!-- <ion-card *ngFor="let tweet of tweets">
 		    <ion-item>
 		    	<ion-avatar item-left>
 		      		<img src="{{tweet.user.profile_image_url}}">
@@ -33,7 +33,11 @@
 			<ion-card-content>
 		    	<p>{{tweet.text}}</p>
 		  	</ion-card-content>
-	  	</ion-card>	
+	  	</ion-card>	 -->
+
+	  	<div *ngFor="let tweet of tweets">
+	  		<page-tweet [tweet]="tweet"></page-tweet>
+	  	</div>
 	</div>
 
 	<div *ngIf="!tweetsAvailable" style="text-align: center;">
@@ -46,4 +50,8 @@
 		<p>Please change the query and try again</p>		
 	</div>
 
+
+
 </ion-content>
+
+

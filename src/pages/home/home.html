@@ -21,8 +21,24 @@
 	</ion-item>
 
 	<ion-item>
+	  <ion-label floating>Player Team Op</ion-label>
+	  <ion-select [(ngModel)]="player_team_op">
+	    <ion-option selected value="AND">And</ion-option>
+	    <ion-option value="OR">Or</ion-option>
+	  </ion-select>
+	</ion-item>
+
+	<ion-item>
 		<ion-label floating>Team</ion-label>
 		<ion-input type="text" [(ngModel)]="team"></ion-input>
+	</ion-item>
+
+	<ion-item>
+	  <ion-label floating>Team Author Op</ion-label>
+	  <ion-select [(ngModel)]="team_author_op">
+	    <ion-option selected value="AND">And</ion-option>
+	    <ion-option value="OR">Or</ion-option>
+	  </ion-select>
 	</ion-item>
 
 	<ion-item>
@@ -30,18 +46,10 @@
 		<ion-input type="text" [(ngModel)]="author"></ion-input>
 	</ion-item>
 
-	<ion-item>
-		<ion-label>Source</ion-label>
-		<ion-select [(ngModel)]="source">
-			<ion-option value="rest">Twitter REST Api</ion-option>
-			<ion-option value="stream">Twitter Stream Api</ion-option>
-		</ion-select>
-	</ion-item>
-
 	 <ion-item>
 	    <ion-label>Use Database</ion-label>
 	    <ion-toggle [(ngModel)]="useDb" value="true"></ion-toggle>
 	 </ion-item>
 
-	 <button (click)="onGetTweetsClick()" ion-button>Get Tweets</button>
+	 <button block style="margin-top: 30px;" (click)="onGetTweetsClick()" ion-button>Get Tweets</button>
 </ion-content>

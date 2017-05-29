@@ -25,9 +25,55 @@
   </script>-->
 
   <link href="build/main.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
+
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+
+ $(window).on('load', function () {
+
+ $('iframe[id^=twitter-widget-]').each(function () {
+
+ var head = $(this).contents().find('head');
+
+ if (head.length) {
+
+ head.append('<style>.timeline { max-width: 100% !important; width: 100% !important; } .timeline .stream { max-width: none !important; width: 100% !important; }</style>');
+
+ }
+
+ $('#twitter-widget-0').append($('<div class=timeline>'));
+
+ })
+
+ });
+
+</script>
 
 </head>
 <body>
+
+  <script>
+    // START twttr initialization
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+    
+      return t;
+    }(document, "script", "twitter-wjs"));
+    // END twttr initialization
+  </script>
 
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>
